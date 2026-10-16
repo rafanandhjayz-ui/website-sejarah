@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sejarah X | NEXA TECH</title>
+<style>
+:root {
+  --navy:#10233f; --blue:#1c4e80; --gold:#e9b95d;
+  --paper:#f5f7fb; --ink:#253247; --muted:#64748b;
+  --white:#fff; --line:#e5eaf1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:Arial,Helvetica,sans-serif;line-height:1.75}
+button,a{font:inherit}
+button{cursor:pointer}
+header{height:72px;background:var(--navy);color:white;display:flex;
+align-items:center;justify-content:space-between;padding:0 6%;
+position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #10233f20}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.logo{background:var(--gold);color:var(--navy);font-weight:900;
+padding:7px 10px;border-radius:9px}
+.brand strong{display:block;letter-spacing:1px}
+.brand small{color:#c6d3e4;font-size:11px}
+.menu-btn{background:transparent;color:white;border:1px solid #ffffff50;
+border-radius:9px;padding:7px 13px;font-size:24px}
+.hero{background:linear-gradient(110deg,#10233f,#1c4e80);
+color:white;padding:70px 7% 65px}
+.hero-inner{max-width:1200px;margin:auto}
+.eyebrow{color:var(--gold);font-weight:bold;letter-spacing:2px;font-size:12px}
+.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.15;
+max-width:800px;margin:14px 0}
+.hero p{max-width:670px;color:#e1eaf5;font-size:17px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn{border:0;border-radius:9px;padding:11px 18px;font-weight:bold;
+display:inline-block;text-decoration:none}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-outline{background:transparent;color:white;border:1px solid #ffffff80}
+.container{max-width:1200px;margin:35px auto;padding:0 22px}
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:25px;
+align-items:start}
+.sidebar,.content-card{background:white;border:1px solid var(--line);
+border-radius:16px;box-shadow:0 8px 25px #1e293b08}
+.sidebar{padding:20px;position:sticky;top:90px;max-height:calc(100vh - 110px);
+overflow-y:auto}
+.sidebar h3{margin:0 0 4px;color:var(--navy)}
+.sidebar p{font-size:12px;color:var(--muted);margin:0 0 15px}
+.nav-link{display:block;text-decoration:none;color:#40516a;padding:10px 12px;
+border-radius:8px;margin:3px 0;font-size:13px;line-height:1.5}
+.nav-link:hover,.nav-link.active{background:#eaf1fa;color:var(--blue);
+font-weight:bold}
+.nav-link .letter{display:inline-block;min-width:26px;color:#b17b1b;font-weight:bold}
+.content-card{padding:clamp(20px,4vw,42px);min-height:530px}
+.breadcrumb{font-size:12px;color:var(--muted);margin-bottom:12px}
+.tag{display:inline-block;background:#fff5dc;color:#845b0a;padding:4px 10px;
+border-radius:30px;font-size:11px;font-weight:bold}
+h2{font-size:clamp(27px,4vw,37px);line-height:1.25;color:var(--navy);
+margin:12px 0 18px}
+h3{color:var(--navy);margin-top:28px}
+h4{color:var(--blue);margin-bottom:5px}
+p{margin:10px 0}
+.lead{font-size:17px;color:#475569}
+.callout{background:#eef5fc;border-left:4px solid var(--blue);padding:15px 18px;
+border-radius:7px;margin:20px 0}
+.callout strong{color:var(--navy)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;
+margin:20px 0}
+.info-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;
+background:#fff}
+.info-card .pad{padding:14px}
+.info-card h3{font-size:16px;margin:0 0 5px}
+.info-card p{font-size:13px;color:#536174;margin:0}
+.info-card .mini{font-size:11px;color:#a16c13;font-weight:bold}
+ul,ol{padding-left:23px}
+li{padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{background:#edf3fa;color:var(--navy)}
+.pager{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);
+margin-top:30px;padding-top:20px}
+.pager button{background:#edf3fa;color:var(--blue);border:0;border-radius:8px;
+padding:10px 13px;font-weight:bold}
+.pager button:disabled{opacity:.35;cursor:default}
+.progress{height:5px;background:#e8edf4;border-radius:5px;overflow:hidden;margin:10px 0 18px}
+.progress span{display:block;height:100%;background:var(--gold);width:0}
+footer{background:var(--navy);color:#d7e2f0;padding:28px 7%;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;
+gap:20px;flex-wrap:wrap}
+footer strong{color:var(--gold)}
+.overlay{position:fixed;inset:0;background:#07142699;z-index:20;display:none;
+justify-content:flex-end}
+.overlay.show{display:flex}
+.drawer{background:white;width:min(360px,88vw);height:100%;padding:28px;
+box-shadow:-10px 0 30px #0002;overflow:auto}
+.drawer-top{display:flex;justify-content:space-between;align-items:center}
+.close{background:#edf2f7;border:0;border-radius:8px;padding:6px 12px;font-size:22px}
+.drawer button.item{display:block;width:100%;text-align:left;background:white;
+border:0;border-bottom:1px solid var(--line);padding:15px 4px;color:var(--navy);
+font-weight:bold}
+.drawer button.item:hover{color:var(--blue)}
+.modal{position:fixed;inset:0;background:#071426bb;z-index:30;display:none;
+align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.modal-box{background:white;width:min(620px,100%);max-height:85vh;overflow:auto;
+border-radius:16px;padding:28px}
+.modal-head{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.member{padding:12px 0;border-bottom:1px solid var(--line)}
+.member b{display:block;color:var(--navy)}
+.member span{font-size:13px;color:var(--muted)}
+.search{width:100%;padding:12px 14px;border:1px solid #d7dfeb;
+border-radius:9px;margin:5px 0 13px;font-size:14px}
+.empty{color:var(--muted);padding:20px;text-align:center}
+@media(max-width:850px){
+ .layout{grid-template-columns:1fr}
+ .sidebar{position:static;max-height:none}
+ .sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}
+ .hero{padding:50px 6%}
+}
+@media(max-width:520px){
+ header{padding:0 4%;height:65px}
+ .brand small{font-size:10px}
+ .container{padding:0 12px;margin:18px auto}
+ .content-card{padding:19px}
+ .cards{grid-template-columns:1fr}
+  .sidebar nav{grid-template-columns:1fr}
+ .pager button{font-size:12px;padding:9px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand" onclick="goHome()">
+    <div class="logo">NX</div>
+    <div><strong>NEXA TECH</strong><small>SEJARAH INDONESIA · KELAS X</small></div>
+  </div>
+  <button class="menu-btn" aria-label="Buka menu" onclick="openDrawer()">☰</button>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div class="eyebrow">MEDIA PEMBELAJARAN DIGITAL</div>
+  <h1>Indonesia pada Masa Praaksara dan Jalur Rempah</h1>
+  <p>Jelajahi perjalanan manusia purba, perkembangan kebudayaan, asal-usul nenek moyang, hingga peran Nusantara dalam jalur perdagangan rempah.</p>
+  <div class="hero-actions">
+   <button class="btn btn-gold" onclick="navigate('A')">Mulai Belajar →</button>
+   <button class="btn btn-outline" onclick="navigate('R')">Lihat Rangkuman</button>
+  </div>
+ </div>
+</section>
+
+<div class="container">
+ <div class="layout">
+  <aside class="sidebar">
+   <h3>Daftar Materi</h3>
+   <p>Klik judul untuk membuka halaman masing-masing.</p>
+   <input class="search" id="search" placeholder="Cari subbab..." oninput="filterNav()">
+   <div class="progress"><span id="progressBar"></span></div>
+   <nav id="navList"></nav>
+  </aside>
+  <main class="content-card" id="content" aria-live="polite"></main>
+ </div>
+</div>
+
+<footer>
+ <div class="footer-inner">
+  <div><strong>PT. NEXA TECH</strong><br>Media pembelajaran sejarah digital.</div>
+  <div>Created by <strong>PT. NEXA TECH</strong><br>SMKN 54 JAKARTA · © 2026</div>
+ </div>
+</footer>
+
+<div class="overlay" id="drawer" onclick="if(event.target===this)closeDrawer()">
+ <div class="drawer">
+  <div class="drawer-top"><h2 style="font-size:22px">Menu</h2>
+   <button class="close" onclick="closeDrawer()">×</button></div>
+  <p>Informasi dan bantuan</p>
+  <button class="item" onclick="closeDrawer();showAbout()">▣ &nbsp; Tentang Kami</button>
+  <button class="item" onclick="closeDrawer();showContact()">☎ &nbsp; Kontak</button>
+  <button class="item" onclick="closeDrawer();navigate('R')">▤ &nbsp; Rangkuman Materi</button>
+  <button class="item" onclick="closeDrawer();goHome()">⌂ &nbsp; Beranda</button>
+ </div>
+</div>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-box">
+  <div class="modal-head"><h2 id="modalTitle" style="font-size:25px"></h2>
+   <button class="close" onclick="closeModal()">×</button></div>
+  <div id="modalBody"></div>
+ </div>
+</div>
+
+<script>
+// Semua materi diringkas berdasarkan naskah yang diberikan.
+const sections=[
+{id:"A",title:"Pengertian Masa Praaksara",lead:"Masa sebelum manusia mengenal tulisan.",body:`
+<p>Masa praaksara disebut juga prasejarah, nirleka, atau proto sejarah. Istilah praaksara berarti masa sebelum manusia mengenal tulisan sehingga informasi tentang kehidupan saat itu diperoleh melalui fosil, artefak, dan peninggalan lainnya.</p>
+<h3>Pembagian zaman menurut geologi</h3>
+<div class="cards">
+<div class="info-card"><div class="pad"><h3>1. Arkaekum</h3><p>Bumi masih sangat panas dan belum stabil. Kulit Bumi mulai terbentuk dan kehidupan awal mulai muncul.</p></div></div>
+<div class="info-card"><div class="pad"><h3>2. Paleozoikum</h3><p>Kehidupan laut berkembang, disusul ikan, tumbuhan darat, amfibi, dan reptil awal.</p></div></div>
+<div class="info-card"><div class="pad"><h3>3. Mesozoikum</h3><p>Dikenal sebagai zaman reptil dan kejayaan dinosaurus. Mamalia awal juga mulai muncul.</p></div></div>
+<div class="info-card"><div class="pad"><h3>4. Neozoikum/Kainozoikum</h3><p>Mamalia berkembang pesat dan manusia muncul. Zaman ini dibagi menjadi Tersier dan Kuarter.</p></div></div>
+</div>
+<h3>Neozoikum: Tersier dan Kuarter</h3>
+<p><b>Zaman Tersier:</b> hewan menyusui berkembang, reptil raksasa berangsur lenyap, dan primata mulai muncul.</p>
+<p><b>Zaman Kuarter:</b> terjadi perubahan iklim dan beberapa zaman es. Manusia purba berkembang hingga muncul manusia modern, kemudian mengenal pertanian dan membangun peradaban.</p>
+<div class="callout"><strong>Lima peristiwa penting:</strong> kehadiran manusia purba pada Pleistosen Bawah, kemunculan Manusia Modern Awal (MMA), berakhirnya Zaman Es, munculnya penutur Austronesia, dan keterlibatan manusia praaksara dalam pelayaran.</div>`},
+{id:"B",title:"Situs-Situs Kuno Masa Praaksara",lead:"Situs arkeologi menjadi bukti kehidupan dan kebudayaan manusia masa lampau.",body:`
+<div class="cards">
+<div class="info-card"><div class="pad"><h3>Gua Harimau</h3><p>Sumatra Selatan. Menyimpan kerangka manusia, lukisan gua, dan benda arkeologi.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Megalitikum Besemah</h3><p>Pagar Alam, Sumatra Selatan. Terkenal dengan arca batu, dolmen, dan menhir.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Trinil</h3><p>Ngawi, Jawa Timur. Tempat penemuan fosil Homo erectus oleh Eugène Dubois pada abad ke-19.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Ngandong</h3><p>Blora, Jawa Tengah. Dikenal dengan penemuan fosil Homo erectus.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Sangiran</h3><p>Jawa Tengah. Situs penting dengan banyak fosil manusia purba, hewan, dan bukti kehidupan purba.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Patiayam</h3><p>Kudus, Jawa Tengah. Menyimpan fosil manusia purba, hewan purba, dan alat batu.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Liang Bua</h3><p>Flores, Nusa Tenggara Timur. Tempat ditemukannya Homo floresiensis.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Geopark Meratus</h3><p>Kalimantan Selatan. Memiliki bentang alam geologi tua, keanekaragaman hayati, dan warisan budaya.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Lore Lindu</h3><p>Sulawesi Tengah. Terkenal dengan patung batu, kalamba, dan menhir.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Maros-Pangkep</h3><p>Sulawesi Selatan. Kawasan karst yang terkenal dengan lukisan gua dan cap tangan prasejarah.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Leang Bulu’ Sipong 4</h3><p>Lukisan gua yang menggambarkan babi rusa dan figur mirip manusia berburu; diperkirakan berusia sekitar 44.000 tahun atau lebih berdasarkan penelitian awal.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Leang Lampoa</h3><p>Kawasan Maros-Pangkep dengan peninggalan arkeologi dan jejak aktivitas manusia.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Leang Sumpang Bita</h3><p>Pangkep, Sulawesi Selatan. Memiliki cap tangan, gambar hewan, dan jejak aktivitas manusia prasejarah.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Leang Timpuseng</h3><p>Maros, Sulawesi Selatan. Dikenal dengan cap tangan dan gambar babi rusa.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Megalitik Tutari</h3><p>Kabupaten Jayapura, Papua. Memiliki batu bergambar dan susunan batu peninggalan budaya.</p></div></div>
+</div>
+<div class="callout"><b>Catatan:</b> Nama “Sangkuriang Mangkaliha(t)” dan “Leang Jing” dalam naskah perlu dipastikan kembali ejaan serta identitas situsnya.</div>`},
+{id:"C",title:"Mengenal Jenis Manusia Purba",lead:"Fosil membantu para ahli mempelajari ciri dan kehidupan manusia purba.",body:`
+<div class="cards">
+<div class="info-card"><div class="pad"><h3>1. Meganthropus paleojavanicus</h3><p>Ditemukan von Koenigswald di Sangiran sekitar 1936–1941. Memiliki rahang besar dan kuat, geraham besar, serta rahang tebal.</p></div></div>
+<div class="info-card"><div class="pad"><h3>2. Pithecanthropus mojokertensis</h3><p>Ditemukan di Perning, Mojokerto, pada 1936. Fosil berupa tengkorak anak, dengan dahi rendah dan tulang tengkorak tebal.</p></div></div>
+<div class="info-card"><div class="pad"><h3>3. Pithecanthropus erectus</h3><p>Ditemukan Eugène Dubois di Trinil pada 1891. Ciri yang disebut dalam materi: berjalan tegak, dahi rendah, dan tonjolan alis kuat.</p></div></div>
+<div class="info-card"><div class="pad"><h3>4. Pithecanthropus soloensis</h3><p>Ditemukan di sekitar Bengawan Solo, terutama Ngandong. Memiliki tengkorak kuat, dahi rendah, dan tonjolan alis tebal.</p></div></div>
+<div class="info-card"><div class="pad"><h3>5. Homo wajakensis</h3><p>Ditemukan B.D. van Rietschoten di Wajak, Tulungagung, pada 1889. Bentuk tengkoraknya mendekati manusia modern.</p></div></div>
+<div class="info-card"><div class="pad"><h3>6. Homo floresiensis</h3><p>Ditemukan di Liang Bua, Flores, pada 2003. Dijuluki manusia Hobbit karena tubuhnya relatif kecil; menggunakan alat batu.</p></div></div>
+<div class="info-card"><div class="pad"><h3>7. Homo soloensis</h3><p>Fosil ditemukan di Ngandong sekitar Bengawan Solo. Dalam klasifikasi modern, fosil ini umumnya dimasukkan ke kelompok Homo erectus.</p></div></div>
+<div class="info-card"><div class="pad"><h3>8. Homo sapiens</h3><p>Manusia modern yang berasal dari Afrika sekitar 300.000 tahun lalu. Memiliki kemampuan berpikir, berbahasa, membuat alat, dan mengembangkan kebudayaan.</p></div></div>
+</div>`},
+{id:"D",title:"Corak Kehidupan Manusia Purba",lead:"Cara manusia memenuhi kebutuhan hidup berkembang seiring perubahan pengetahuan dan teknologi.",body:`
+<h3>1. Berburu dan mengumpulkan makanan</h3>
+<p>Pada masa Paleolithikum atau Zaman Batu Tua, alat batu dibuat secara kasar. Manusia hidup dalam kelompok kecil sekitar 10–15 orang, berburu hewan dan mengumpulkan tumbuhan atau makanan dari alam (<i>food gathering</i>). Mereka berpindah-pindah mengikuti persediaan makanan (nomaden).</p>
+<p>Pembagian kerja mulai terjadi berdasarkan jenis kelamin atau umur. Api dimanfaatkan, antara lain, untuk menghadapi hewan. Pada masa berburu tingkat lanjut berkembang tradisi serpih-bilah, alat tulang, dan kapak genggam.</p>
+<h3>2. Bercocok tanam dan beternak</h3>
+<p>Pada masa Neolithikum atau Zaman Batu Muda, manusia mulai hidup menetap (sedenter), bercocok tanam, dan menghasilkan makanan sendiri (<i>food producing</i>). Pembukaan lahan dilakukan dengan cara tebas dan bakar (<i>slash and burn</i>). Mereka juga mulai memelihara hewan dan menyimpan persediaan makanan.</p>
+<h3>3. Masa perundagian</h3>
+<p>Masa perundagian ditandai kemampuan mengolah bijih logam dan munculnya golongan undagi, yaitu orang yang memiliki keterampilan khusus. Peralatan logam, gerabah, dan perhiasan semakin berkembang serta pembagian kerja menjadi lebih kompleks.</p>
+<ul><li>Mengenal pengolahan logam.</li><li>Hidup berkelompok dan mulai bercocok tanam.</li><li>Mengenal lingkungan serta memiliki struktur sosial.</li><li>Dalam materi, kepercayaan animisme dan dinamisme disebut sebagai salah satu cirinya.</li></ul>
+<div class="callout"><b>Perbedaan penting:</b> <i>Food gathering</i> berarti memperoleh makanan dari alam, sedangkan <i>food producing</i> berarti menghasilkan makanan sendiri.</div>`},
+{id:"E",title:"Hasil Kebudayaan Manusia Purba",lead:"Alat dan bangunan peninggalan menunjukkan perkembangan keterampilan manusia praaksara.",body:`
+<h3>1. Paleolithikum (Zaman Batu Tua)</h3>
+<p>Tradisi alat meliputi kapak perimbas-penetak, serpih-bilah, dan alat tulang-tanduk. Budaya Pacitan dikenal melalui alat seperti kapak perimbas, kapak penetak, pahat genggam, kapak genggam awal, kapak genggam, dan serut genggam.</p>
+<h3>2. Mesolithikum (Zaman Batu Tengah)</h3>
+<p>Masa peralihan dari Paleolithikum ke Neolithikum. Tradisi utamanya adalah serpih-bilah (Toala/Flakes Culture), alat tulang (Sampung Bone Culture), dan kapak genggam Sumatra (Pebble/Sumatralith).</p>
+<ul><li><b>Serpih-bilah:</b> alat batu kecil, seperti pisau, serut, lancipan, mata panah, dan mikrolit.</li><li><b>Alat tulang:</b> ditemukan antara lain dalam penelitian Gua Lawa, dekat Sampung, Ponorogo.</li><li><b>Kjokkenmoddinger:</b> timbunan kulit kerang dan siput yang menjadi bukti aktivitas manusia di pesisir.</li></ul>
+<h3>3. Neolithikum (Zaman Batu Muda)</h3>
+<p>Manusia mengupam batu hingga halus. Hasil budaya meliputi kapak persegi, kapak lonjong, alat obsidian, mata panah, pemukul kulit kayu, gerabah, serta gelang batu dan kerang.</p>
+<p><b>Kapak persegi:</b> penampangnya persegi panjang atau trapesium. Ukuran besar disebut beliung dan ukuran kecil disebut tatah. <b>Kapak lonjong:</b> berbentuk bulat telur, salah satu ujungnya lancip untuk tangkai dan ujung lainnya diasah tajam.</p>
+<h3>4. Megalithikum (Tradisi Batu Besar)</h3>
+<p>Tradisi ini berkaitan dengan bangunan batu dan penghormatan terhadap leluhur. Peninggalannya meliputi:</p>
+<ul><li><b>Menhir:</b> batu tegak untuk peringatan atau penghormatan kepada orang yang meninggal.</li><li><b>Dolmen:</b> meja batu yang antara lain digunakan untuk meletakkan sesaji.</li><li><b>Peti kubur:</b> tempat penguburan yang tersusun dari lempengan batu.</li><li><b>Sarkofagus:</b> wadah jenazah dari batu utuh.</li><li><b>Waruga:</b> kubur batu berbentuk kubus dengan penutup menyerupai atap rumah, ditemukan di Minahasa.</li><li><b>Punden berundak:</b> bangunan bertingkat yang digunakan untuk sesaji dan berkaitan dengan penghormatan leluhur.</li></ul>
+<h3>5. Perundagian (Zaman Logam)</h3>
+<p>Pengolahan logam mendorong kemajuan teknologi dan pembagian kerja. Teknik yang disebut dalam materi adalah <i>a cire perdue</i> dan <i>bivalve</i>. Hasil budayanya antara lain:</p>
+<ul><li><b>Nekara dan moko:</b> benda perunggu berbentuk seperti gendang, berkaitan dengan upacara; moko berukuran lebih kecil.</li><li><b>Kapak perunggu:</b> termasuk kapak corong dan kapak upacara.</li><li><b>Candrasa:</b> benda perunggu yang digunakan dalam upacara.</li><li><b>Bejana perunggu:</b> wadah dengan hiasan, ditemukan antara lain di Madura dan Sumatra.</li><li><b>Arca perunggu:</b> berbentuk manusia atau hewan, ditemukan di sejumlah daerah Indonesia.</li></ul>`},
+{id:"F",title:"Asal-usul Nenek Moyang Bangsa Indonesia",lead:"Berbagai teori digunakan untuk menjelaskan asal-usul dan perpindahan penduduk ke Nusantara.",body:`
+<h3>1. Teori asal-usul</h3>
+<div class="info-card"><div class="pad"><h3>Teori Nusantara</h3><p>Menyatakan nenek moyang bangsa Indonesia berasal dari Nusantara sendiri. Tokoh yang disebut mendukungnya antara lain Mohammad Yamin, J. Crawford, K. Himly, dan Sutan Takdir Alisjahbana.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Teori Out of Africa</h3><p>Menyatakan manusia modern (Homo sapiens) pertama kali muncul di Afrika lalu menyebar ke berbagai wilayah dunia. Materi juga menyebut perdebatan dengan model evolusi multiregional.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Teori Out of Taiwan</h3><p>Menyatakan penutur bahasa Austronesia berasal dari Taiwan, kemudian menyebar melalui Filipina ke Indonesia dan kawasan Pasifik.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Teori Yunan</h3><p>Menyatakan leluhur bangsa Indonesia berasal dari Yunan, Cina Selatan. Pendukung yang disebut dalam materi antara lain R.H. Geldern dan J.H. Kern, berdasarkan kemiripan artefak dan bahasa.</p></div></div>
+<h3>2. Proses migrasi penduduk</h3>
+<p>Materi membagi kehidupan Manusia Modern Awal menjadi kelompok yang hidup hingga akhir zaman es, kelompok yang dikenal sebagai Austro-Melanesoid, dan kedatangan penutur bahasa Austronesia.</p>
+<h4>Proto Melayu (Melayu Tua)</h4>
+<p>Diperkirakan datang sekitar 3.000 SM. Dalam materi, jalurnya meliputi jalur barat melalui Semenanjung Malaya menuju Sumatra dan Jawa, serta jalur timur melalui Taiwan dan Filipina menuju Sulawesi dan Papua.</p>
+<h4>Deutro Melayu (Melayu Muda)</h4>
+<p>Diperkirakan datang sekitar 400–200 SM melalui jalur barat, melewati wilayah Vietnam dan Semenanjung Malaya menuju Nusantara. Materi mengaitkannya dengan penyebaran perkakas dan senjata besi.</p>
+<h4>Melanesoid</h4>
+<p>Materi menghubungkan kelompok Austro-Melanesoid dengan kehidupan pada zaman es, persebaran ke Papua dan kawasan sekitarnya, serta tradisi alat batu Mesolithikum.</p>
+<h4>Negrito dan Weddid</h4>
+<p>Keduanya disebut dalam materi sebagai kelompok penduduk awal. Uraian naskah mengaitkan Negrito dengan ciri tubuh kecil dan rambut keriting, sedangkan Weddid/Vedda digambarkan memiliki kulit cokelat tua dan tinggi rata-rata 155–160 cm.</p>
+<div class="callout"><b>Catatan belajar:</b> teori asal-usul dan klasifikasi ras di atas ditampilkan sebagai isi materi yang diberikan. Beberapa penjelasan merupakan teori lama dan dapat berbeda dari temuan genetika serta penelitian sejarah terkini.</div>`},
+{id:"G",title:"Jalur Rempah di Indonesia",lead:"Laut dan rempah menghubungkan Nusantara dengan berbagai wilayah dunia.",body:`
+
+<p>Walaupun sumber tertulis tentang kehidupan maritim pada masa praaksara terbatas, materi menjelaskan bahwa nenek moyang bangsa Indonesia telah melakukan pelayaran, perdagangan antarpulau, dan interaksi dengan masyarakat luar. Perahu tradisional bercadik menjadi salah satu contoh teknologi pelayaran.</p>
+<h3>Mengapa rempah-rempah penting?</h3>
+<p>Nusantara dikenal sebagai penghasil rempah, terutama pala dari Banda dan cengkih dari Ternate. Rempah menjadi komoditas perdagangan yang menghubungkan berbagai pulau, suku, dan wilayah di luar Nusantara.</p>
+<div class="cards">
+<div class="info-card"><div class="pad"><h3>Jalur antarpulau</h3><p>Perdagangan laut mempertemukan masyarakat berbagai pulau dan mendorong pertukaran barang serta budaya.</p></div></div>
+<div class="info-card"><div class="pad"><h3>Jaringan dunia</h3><p>Jaringan perdagangan terhubung ke wilayah seperti India, Sri Lanka, Afrika, dan Madagaskar.</p></div></div>
+</div>
+<h3>Dampak jalur rempah</h3>
+<ul><li>Mendorong perkembangan pelayaran dan perdagangan.</li><li>Menghubungkan berbagai kelompok masyarakat dan wilayah.</li><li>Mendorong pertukaran budaya, pengetahuan, dan teknologi.</li><li>Rempah menarik kedatangan pedagang Eropa, termasuk Portugis, Inggris, Spanyol, dan Belanda. Kepentingan dagang kemudian berkembang menjadi kolonialisme di sejumlah wilayah.</li></ul>
+<div class="callout"><b>Kesimpulan:</b> jalur rempah bukan sekadar jalur jual beli, melainkan jaringan hubungan maritim yang ikut membentuk sejarah Nusantara.</div>`},
+{id:"R",title:"Rangkuman Seluruh Materi",lead:"Inti pembelajaran Bab III: Indonesia pada Masa Praaksara dan Jalur Rempah.",body:`
+<ol>
+<li><b>Masa praaksara</b> adalah masa sebelum manusia mengenal tulisan. Pembagian zaman geologi dalam materi meliputi Arkaekum, Paleozoikum, Mesozoikum, dan Neozoikum.</li>
+<li><b>Situs prasejarah</b> seperti Sangiran, Trinil, Liang Bua, Maros-Pangkep, dan Lore Lindu menyimpan fosil, artefak, lukisan gua, serta peninggalan megalitikum.</li>
+<li><b>Jenis manusia purba</b> yang dibahas antara lain Meganthropus paleojavanicus, Pithecanthropus mojokertensis, Pithecanthropus erectus, Pithecanthropus soloensis, Homo wajakensis, Homo floresiensis, Homo soloensis, dan Homo sapiens.</li>
+<li><b>Corak kehidupan</b> berkembang dari berburu dan mengumpulkan makanan (food gathering), menuju bercocok tanam serta menghasilkan makanan (food producing), lalu masa perundagian yang mengenal pengolahan logam.</li>
+<li><b>Hasil kebudayaan</b> mencakup alat batu Paleolithikum dan Mesolithikum, kapak persegi dan lonjong pada Neolithikum, bangunan megalitikum seperti menhir dan dolmen, serta benda logam seperti nekara dan kapak perunggu.</li>
+<li><b>Asal-usul nenek moyang</b> dijelaskan melalui beberapa teori, yaitu Nusantara, Out of Africa, Out of Taiwan, dan Yunan. Materi juga membahas migrasi Proto Melayu, Deutro Melayu, Melanesoid, Negrito, dan Weddid.</li>
+<li><b>Jalur rempah</b> menunjukkan peran penting pelayaran dan perdagangan Nusantara. Rempah seperti pala dan cengkih mendorong pertukaran barang, budaya, dan teknologi serta menarik kedatangan bangsa Eropa.</li>
+</ol>
+<div class="callout"><b>Kata kunci:</b> praaksara · fosil · artefak · manusia purba · food gathering · food producing · megalitikum · perundagian · migrasi · Austronesia · jalur rempah.</div>
+<h3>Pertanyaan refleksi</h3>
+<ol><li>Mengapa fosil dan artefak penting untuk mempelajari masa praaksara?</li><li>Apa perbedaan food gathering dan food producing?</li><li>Sebutkan tiga hasil kebudayaan manusia praaksara.</li><li>Bagaimana jalur rempah memengaruhi hubungan Nusantara dengan dunia luar?</li></ol>
+<button class="btn btn-gold" onclick="navigate('A')">Pelajari Ulang dari Awal ↑</button>`}
+];
+
+const nav=document.getElementById("navList");
+const content=document.getElementById("content");
+let current="A";
+function buildNav(){
+ nav.innerHTML=sections.map(s=>`<a class="nav-link" data-title="${s.title.toLowerCase()}" href="#${s.id}" onclick="navigate('${s.id}')"><span class="letter">${s.id==="R"?"★":s.id+"."}</span>${s.title}</a>`).join("");
+}
+function filterNav(){
+ const q=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".nav-link").forEach(a=>a.style.display=a.dataset.title.includes(q)?"block":"none");
+}
+function navigate(id){
+ const s=sections.find(x=>x.id===id)||sections[0];
+ current=s.id;
+ history.replaceState(null,"","#"+s.id);
+ document.querySelectorAll(".nav-link").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+s.id));
+ const index=sections.findIndex(x=>x.id===s.id);
+ const prev=sections[index-1],next=sections[index+1];
+ content.innerHTML=`
+ <div class="breadcrumb">Beranda / Materi / ${s.title}</div>
+ <span class="tag">${s.id==="R"?"RANGKUMAN":"BAB III · SUBBAB "+s.id}</span>
+ <h2>${s.title}</h2><p class="lead">${s.lead}</p>
+ ${s.id==="R"?"":``}
+ ${s.body}
+ <div class="pager">
+ <button ${!prev?"disabled":""} onclick="navigate('${prev?prev.id:s.id}')">← ${prev?"Sebelumnya":"Awal materi"}</button>
+ <button ${!next?"disabled":""} onclick="navigate('${next?next.id:s.id}')">${next?"Berikutnya":"Materi selesai"} →</button>
+ </div>`;
+ document.getElementById("progressBar").style.width=((index+1)/sections.length*100)+"%";
+ window.scrollTo({top:document.querySelector(".container").offsetTop-75,behavior:"smooth"});
+}
+function goHome(){navigate("A");window.scrollTo({top:0,behavior:"smooth"})}
+function openDrawer(){document.getElementById("drawer").classList.add("show")}
+function closeDrawer(){document.getElementById("drawer").classList.remove("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function showModal(title,html){
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalBody").innerHTML=html;
+ document.getElementById("modal").classList.add("show");
+}
+function showAbout(){
+ showModal("Tentang PT. NEXA TECH",`
+ <p><b>PT. NEXA TECH</b> adalah tim pengembang media pembelajaran digital yang dibuat di <b>SMKN 54 JAKARTA</b>. Website ini dirancang untuk membantu siswa mempelajari Sejarah kelas X secara lebih terstruktur dan menarik.</p>
+ <h3>Tim Kami</h3>
+ <div class="member"><b>RAKA AQIL WALIYYUDDIN IRFANSYAH</b><span>Chief Executive Officer (CEO)</span></div>
+ <div class="member"><b>RAFA ANANDHIA JAYAKARTA</b><span>General Manager</span></div>
+ <div class="member"><b>NAZWA ATMAJA SIKUMBANG</b><span>Human Resources Development (HRD)</span></div>
+ <div class="member"><b>RAJA SHOGIRI DENATA</b><span>Teknisi</span></div>
+ <div class="member"><b>THREE SAMA THIIN</b><span>Teknisi</span></div>
+ <p style="font-size:12px;color:#64748b">Dibuat sebagai proyek media pembelajaran.</p>`);
+}
+function showContact(){
+ showModal("Kontak Kami",`
+ <p>Untuk pertanyaan mengenai website pembelajaran ini, silakan hubungi tim PT. NEXA TECH.</p>
+ <div class="callout"><b>Nomor kontak</b><br><a href="tel:+62085777847884">+62 0857-7784-7884</a></div>
+ <p><a class="btn btn-gold" href="https://wa.me/628577847884" target="_blank" rel="noopener">Hubungi melalui WhatsApp ↗</a></p>
+ <p style="font-size:12px;color:#64748b">Tautan WhatsApp akan membuka aplikasi atau situs WhatsApp jika tersedia.</p>`);
+}
+buildNav();
+navigate(location.hash.slice(1)||"A");
+window.addEventListener("hashchange",()=>navigate(location.hash.slice(1)||"A"));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeDrawer()}});
+</script>
+</body>
+</html>
